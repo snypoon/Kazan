@@ -2378,6 +2378,16 @@ i, em {
 }
 
 /*===*/
+.pp .video{
+	width: 80%;
+	height: 80%;
+}
+
+.pp .video iframe{
+	width: 100%;
+	height: 100%;
+}
+
 .pp {
 	position: fixed;
 	top: 0;
@@ -2411,4 +2421,15 @@ i, em {
 	justify-content: center;
 	height: 100%;
 	overflow-y: auto;
+}
+
+@media (max-width: 480px){
+	.pp{
+		padding: 0;
+	}
+
+	.pp .video{
+		width: 100%;
+		height: 50%;
+	}
 }
