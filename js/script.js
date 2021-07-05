@@ -34,6 +34,22 @@ $(window).ready( function( $ ) {
 			}); 
 	});
 
+	$('.slider_2').waitForImages(function() {
+		$( '.slider_2' ).lightSlider( {
+
+			easing : 'cubic-bezier(0.25, 0, 0.25, 1)',
+			speed : 600,
+			slideMargin : 21,
+			auto : false,
+			pager : false,
+			gallery : false,
+			controls : false,
+			enableTouch : true,
+			enableDrag : true,
+			autoWidth:true
+			}); 
+	});
+
 	let video = 0;
 
 	$( '.js_pp_btn' ).click( function( e ) {
@@ -77,7 +93,11 @@ $(window).ready( function( $ ) {
 		$('.living__block').toggleClass('living__block-active');
 		$('.block__close').toggleClass('block__close-active');
 		$('.block__open').toggleClass('block__open-active');
-	})
+	});
+
+	$('.block__btn_mob').click(function(){
+		$('.mob__content_open').toggleClass('mob__content_open-active');
+	});
 
 	// carousel
 	
@@ -222,4 +242,52 @@ $(window).ready( function( $ ) {
 
 	footerTimer();
 
+	// timer footer mobile
+
+
+	let footerTimerMobile = function(){
+		function getTimeRemaining(endtime) {
+			var t = Date.parse(endtime) - Date.parse(new Date());
+			var seconds = Math.floor((t / 1000) % 60);
+			var minutes = Math.floor((t / 1000 / 60) % 60);
+			var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+			var days = Math.floor(t / (1000 * 60 * 60 * 24));
+			return {
+				'total': t,
+				'days': days,
+				'hours': hours,
+				'minutes': minutes,
+				'seconds': seconds
+			};
+		}
+		 
+		function initializeClock(id, endtime) {
+			var clock = document.getElementById(id);
+			var daysSpan = clock.querySelector('.footer__days_mob');
+			var hoursSpan = clock.querySelector('.footer__hours_mob');
+			var minutesSpan = clock.querySelector('.footer__minutes_mob');
+			var secondsSpan = clock.querySelector('.footer__seconds_mob');
+		 
+			function updateClock() {
+				var t = getTimeRemaining(endtime);
+		 
+				daysSpan.innerHTML = t.days;
+				hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+				minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+				secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+		 
+				if (t.total <= 0) {
+					clearInterval(timeinterval);
+				}
+			}
+		 
+			updateClock();
+			var timeinterval = setInterval(updateClock, 1000);
+		}
+		 
+		var deadline="July 09 2021 00:00:00 GMT+0300";
+		initializeClock('countdown__footer_mob', deadline);
+	};
+
+	footerTimerMobile();
 });
