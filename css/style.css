@@ -517,6 +517,7 @@ i, em {
 .s2 .video__img{
 	width: 472px;
 	height: 308px;
+	cursor: pointer;
 }
 
 .s2 .main__title{
