@@ -1034,6 +1034,7 @@ i, em {
 .s5 .list__btn{
 	display: flex;
 	align-items: center;
+	display: none;
 }
 
 .s5 .list__link{
